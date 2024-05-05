@@ -94,6 +94,15 @@ spec:
         paths: ["/api/data1"]'
 ```
 
+### Get all namesapce
+```sh
+curl --location 'http://localhost:9999/namespaces'
+```
+
+### Get workload, service-account in a namespace
+```
+curl --location 'http://localhost:9999/namespaces/istio-system/workloads'
+```
 
 ### Temp Notes
 ```sh
