@@ -51,6 +51,10 @@ curl -L https://istio.io/downloadIstio | sh -
 kubectl label namespace default istio-injection=enabled
 # Install default istio addons [Optional]
 kubectl apply -f istio-1.21.2/samples/addons/
+
+
+### Start Appsmith
+docker compose -f docker-compose-infra.yaml
 ```
 
 ### Deploy Services
@@ -114,3 +118,8 @@ curl http://localhost:12122/api/downstream | jq
 `X-Forwarded-Client-Cert` : By=spiffe://cluster.local/ns/namespace-a/sa/default;Hash=d3cb02a89bb6b3de8917856c8c5a6f12aaa100c8cb4afa862078f2ce49507e1d;Subject="";URI=spiffe://cluster.local/ns/namespace-b/sa/default
 
 
+## UI
+
+Appsmith : https://github.com/pritamprasd/poc-k8s-s2s-auth-fe
+
+![Dashboard](./ss1.png)

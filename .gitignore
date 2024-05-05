@@ -4,3 +4,4 @@ istio-*/
 *.deb
 
 *.pyc
+stacks/

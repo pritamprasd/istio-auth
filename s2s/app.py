@@ -37,7 +37,7 @@ def get_all_namespaces():
         res = []
         for n in namespaces:
             res.append(n.metadata.name)
-        return jsonify([x for x in res if x not in SYSTEM_NAMESPACES])
+        return jsonify([x for x in res]) # if x not in SYSTEM_NAMESPACES])
     except Exception as e:
         print(f"Error getting namespaces: {e}")
         return []

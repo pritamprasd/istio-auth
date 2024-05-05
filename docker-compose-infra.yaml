@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  appsmith:
+    image: index.docker.io/appsmith/appsmith-ee
+    ports:
+      - "8088:80"
+      - "443:443"
+    environment:
+      - DATABASE_URL=sqlite://
+      - JWT_SIGNING_KEY=mysecretkey
+    volumes:
+      - ./stacks:/appsmith-stacks
+    restart: unless-stopped
+
+
