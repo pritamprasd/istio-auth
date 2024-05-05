@@ -67,6 +67,32 @@ kubectl apply -f flask-app.yaml
 kubectl apply -f mtls-config.yaml
 ```
 
+### Allow `flask-app` -> `flask-app-caller`
+```sh
+curl --location 'http://localhost:9999/apply-yaml' \
+--header 'Content-Type: text/plain' \
+--data '---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: flask-app-get-allow
+  namespace: namespace-a
+spec:
+  selector:
+    matchLabels:
+      app: flask-app
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: ["flask-app-caller-service-account"]
+    - source:
+        namespaces: ["namespace-b"]
+    to:
+    - operation:
+        methods: ["GET"]
+        paths: ["/api/data1"]'
+```
 
 
 ### Temp Notes

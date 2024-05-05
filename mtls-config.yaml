@@ -20,24 +20,24 @@ spec:
   selector:
     matchLabels:
       app: flask-app
----
-apiVersion: security.istio.io/v1
-kind: AuthorizationPolicy
-metadata:
-  name: flask-app-get-allow
-  namespace: namespace-a
-spec:
-  selector:
-    matchLabels:
-      app: flask-app
-  action: ALLOW
-  rules:
-  - from:
-    - source:
-        principals: ["flask-app-caller-service-account"]
-    - source:
-        namespaces: ["namespace-b"]
-    to:
-    - operation:
-        methods: ["GET"]
-        paths: ["/api/data1"]
+# ---
+# apiVersion: security.istio.io/v1
+# kind: AuthorizationPolicy
+# metadata:
+#   name: flask-app-get-allow
+#   namespace: namespace-a
+# spec:
+#   selector:
+#     matchLabels:
+#       app: flask-app
+#   action: ALLOW
+#   rules:
+#   - from:
+#     - source:
+#         principals: ["flask-app-caller-service-account"]
+#     - source:
+#         namespaces: ["namespace-b"]
+#     to:
+#     - operation:
+#         methods: ["GET"]
+#         paths: ["/api/data1"]
