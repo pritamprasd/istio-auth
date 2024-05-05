@@ -1,0 +1,6 @@
+venv/
+istio-*/
+.vscode
+*.deb
+
+*.pyc
