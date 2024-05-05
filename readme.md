@@ -1,4 +1,4 @@
-# PoC K8s Inter Service Authorization with Istio
+# K8s Inter Service Authorization with Istio
 
 ```mermaid
 C4Context
