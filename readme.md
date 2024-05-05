@@ -8,15 +8,19 @@ C4Context
         System_Boundary(b3, "namespace-b") {
             System_Boundary(b4, "Deployment") {
                 Container(ContainerD, "flask-app-caller")
-                Container(ContainerC, "Istio-Proxy")
+                Container(ContainerC, "Envoy")                
+                System(SystemB, "flask-app-caller-service-account", "ServiceAccount")
             }
-        } 
+        }
         System_Boundary(b1, "namespace-a") {
             System_Boundary(b2, "Deployment") {
-                Container(ContainerA, "Istio-Proxy")
+                Container(ContainerA, "Envoy")
                 Container(ContainerB, "flask-app")
+                System(SystemA, "flask-app-service-account", "ServiceAccount")
+                System(SystemC, "flask-app-get-allow", "AuthorizationPolicy")
+                System(SystemC, "deny-all-requests-namespace-a", "AuthorizationPolicy")
             }
-        }   
+        }    
       }
 
     Rel(PersonA, ContainerD, "calls api")
